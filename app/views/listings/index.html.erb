@@ -1,0 +1,33 @@
+<div class="title">
+  <h1>Listings</h1>
+</div>
+
+<div class="inner-limit-container">
+  <% @listings.each do |list| %>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="listing-caption">          
+          <div><%= link_to list.name, listing_path(list) %></div>
+          
+          <div>
+            <div class="listing-caption-2"><span>RM<%= list.price %></span>
+              <span><%= list.place_type %></span>
+              <span><%= list.city %></span>
+            </div>
+            
+            <% if list.user == current_user %>
+              <div>
+                <%= link_to 'Edit', edit_listing_path(list) %> | 
+                <%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
+            <br>
+            <br>
+
+            <div class="listing-separator"></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<center><%= will_paginate @listings %></center>
+</div>

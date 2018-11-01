@@ -1,2 +1,122 @@
-<%= @user.name %>
-<%= current_user.name%>
+<div class="inner-limit-container row">
+
+	<div class="col-lg-4">
+		<div class="profile-top">
+			<h1>
+				<%= @user.name %>
+			</h1>
+			<p>
+				<%= Faker::Lorem.paragraph %>
+			</p>
+		</div>
+	</div>
+
+	<div class="col-lg-8" style="padding: 0px !important;">
+		<div class="profile-content">
+			<div class="my-listings">
+				<h2>Listings</h2>
+				<% if @user.listings %>
+				<% @user.listings.each do |list| %>
+				<div class="row">
+					<div class="profile-content-photo col-lg-5">
+					</div>
+					<div class="col-lg-7">
+						<div class="profile-listing-caption">
+							<div>
+								<%= link_to list.name, listing_path(list) %>
+							</div>
+							<div>
+								<div class="profile-listing-caption-2"><span>RM
+										<%= list.price %></span>
+									<ul>
+										<table>
+											<tr>
+												<td>Place Type:</td>
+												<td>
+													<%= list.place_type %>
+												</td>
+											</tr>
+											<tr>
+												<td>Property Type:</td>
+												<td>
+													<%= list.property_type %>
+												</td>
+											</tr>
+											<tr>
+												<td>Room Number:</td>
+												<td>
+													<%= list.room_number %>
+												</td>
+											</tr>
+											<tr>
+												<td>Bed Number:</td>
+												<td>
+													<%= list.bed_number %>
+												</td>
+											</tr>
+											<tr>
+												<td>Guest Number:</td>
+												<td>
+													<%= list.guest_number %>
+												</td>
+											</tr>
+											<tr>
+												<td>Country:</td>
+												<td>
+													<%= list.country %>
+												</td>
+											</tr>
+											<tr>
+												<td>State:</td>
+												<td>
+													<%= list.state %>
+												</td>
+											</tr>
+											<tr>
+												<td>City:</td>
+												<td>
+													<%= list.city %>
+												</td>
+											</tr>
+											<tr>
+												<td>Zipcode:</td>
+												<td>
+													<%= list.zipcode %>
+												</td>
+											</tr>
+											<tr>
+												<td>Address:</td>
+												<td>
+													<%= list.address %>
+												</td>
+											</tr>
+											<tr>
+												<td>Description:</td>
+												<td>
+													<%= list.description %>
+												</td>
+											</tr>
+										</table>
+									</ul>
+								</div>
+
+								<% if list.user == current_user %>
+								<div>
+									<%= link_to 'Edit', edit_listing_path(list) %> |
+									<%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+								</div><br>
+
+								<% end %>
+								<div class="listing-separator"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% end %><br /><br />
+				<% end %>
+			</div>
+
+		</div>
+	</div>
+
+</div>

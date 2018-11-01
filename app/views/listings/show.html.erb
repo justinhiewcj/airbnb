@@ -1,0 +1,46 @@
+
+<div class="inner-limit-container listing-show">
+  <div class="listing-text col-lg-12">
+    <h1><%= @listing.name %></h1>
+    <p><%= @listing.description %></p>
+  </div>
+
+  <div class="listing-text col-lg-3 col-sm-6">
+    <div>
+    <p>Host</p>
+    <p><%= @listing.user.name %></p>
+    </div>
+  </div>
+  <div class="listing-text col-lg-3 col-sm-6">
+    <div>
+    <p><%= @listing.city + ", " + @listing.country %></p>
+    </div>
+  </div>
+  <div class="listing-text col-lg-6 col-sm-12">
+    <div>
+    <p><%= @listing.property_type %></p>
+    <p><%= @listing.place_type %></p>
+    <p><%= @listing.guest_number %> guest</p>
+    </div>
+  </div>
+  <div class="listing-text col-lg-6 col-sm-12">
+    <div>
+    <p>RM<%= @listing.price %> per night</p>
+    </div>
+  </div>
+
+  <div class="listing-text col-lg-12">
+    <% if @listing.user == current_user %>
+    	<%= link_to 'Back', listings_path %> | 
+    	<%= link_to 'Edit', edit_listing_path(@listing) %> |
+    	<%= link_to 'Delete', listing_path(@listing), method: :delete %>
+    <% else %>
+    	Other users can book <br/>
+
+      <%= link_to 'Back', listings_path %>
+    <% end %>
+  </div>
+</div>
+
+
+</div>

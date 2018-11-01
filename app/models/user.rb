@@ -4,9 +4,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   validates :password, presence: {on: create}, length: {minimum: 3}
+
   has_many :authentications, :dependent => :destroy
   has_many :listings
   has_many :reservations
+
+  enum roles: [:superadmin, :moderator, :customer]
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
     user = self.create!(

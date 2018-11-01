@@ -1,0 +1,87 @@
+<%= form_for(@listing) do |f| %>
+
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-field">
+    <%= f.label :name %>
+    <div><%= f.text_field :name %></div>
+  </div>
+
+  <div classs="text-area">
+    <%= f.label :description %>
+    <div><%= f.text_area :description %></div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :property_type %>
+    <div>
+    <%= f.select :property_type, ["House", "Entire Floor", "Condominium", "Villa", "Townhouse", "Castle", "Treehouse", "Igloo", "Yurt", "Cave", "Chalet", "Hut", "Tent", "Other"]%>
+    </div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :room_number, "Number of rooms" %>
+    <%= f.number_field :room_number, class:"form-control", min: "0", max: "5"%>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :bed_number, "Number of beds" %>
+    <%= f.number_field :bed_number, class:"form-control", min: "1", max: "6"%>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :capacity, "Number of guests" %>
+    <div><%= f.number_field :guest_number, min: "1", max: "30" %></div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :price, "Price (per night)" %>
+    <div><%= f.text_field :price %></div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :address %>
+    <div><%= f.text_field :address %></div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :city %>
+    <div>
+    <%= f.text_field :city %>
+    </div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :state %>
+    <div>
+    <%= f.text_field :state %>
+    </div>
+  </div>
+
+  <div class="text-field">
+    <%= f.label :country %>
+    <div>
+    <%= f.text_field :country %>
+    </div>
+  </div>
+  <div class="text-field">
+    <%= f.label :zipcode %>
+    <div>
+    <%= f.text_field :zipcode %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

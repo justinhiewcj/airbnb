@@ -41,6 +41,8 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'faker'
+gem 'will_paginate', '~> 3.1.0'
 
 
 
